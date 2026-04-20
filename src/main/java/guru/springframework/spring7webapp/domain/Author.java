@@ -2,6 +2,8 @@ package guru.springframework.spring7webapp.domain;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,7 +17,7 @@ public class Author {
     private String lastName;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
 
     public Set<Book> getBooks() {
         return books;
@@ -70,5 +72,9 @@ public class Author {
     @Override
     public int hashCode() {
         return Objects.hashCode(getId());
+    }
+
+    public Collection<Publisher> getPublisher() {
+        return getPublisher();
     }
 }
