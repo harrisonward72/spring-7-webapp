@@ -19,10 +19,8 @@ public class Publisher {
     private int zipCode;
 
 
-//    @ManyToMany
-//    @JoinTable(name = "author-book",  joinColumns = @JoinColumn(name = "book_id"),
-//            inverseJoinColumns = @JoinColumn(name = "publisher_id"))
-//    private Set<Publisher> getPublisher = new HashSet<>();
+    @OneToMany(mappedBy = "publisher")
+    private Set<Book> books;
 
     public Long getId() {
         return id;

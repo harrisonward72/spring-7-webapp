@@ -41,10 +41,13 @@ public class BootstrapData implements CommandLineRunner {
 
         Author HarrySaved = authorRepository.save(Harry);
         Book HarrySavedBook = bookRepository.save(computer);
-        publisherRepository.save(publisher);
+        Publisher savedPublisher = publisherRepository.save(publisher);
 
         HarrySaved.getBooks().add(HarrySavedBook);
         authorRepository.save(HarrySaved);
+        //HarrySaved.setPublisher(publisher); need to figure out how to get author object to connect with publisher
+        HarrySavedBook.setPublisher(savedPublisher);
+        bookRepository.save(HarrySavedBook);
 
         System.out.println("In BootStrap");
         System.out.println("Author Count: " +  authorRepository.count());
